@@ -253,7 +253,7 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
             </head>
             <body>
                 <div class=\"message-container\">
-                    <img src=\"logo.png\" alt=\"Logo\" class=\"logo\">
+                    <img src=\"https://getwriteiq.com/logo.png\" alt=\"Logo\" class=\"logo\">
                     <div class=\"message\">Please close this page and return to the application.</div>
                 </div>
             </body>
