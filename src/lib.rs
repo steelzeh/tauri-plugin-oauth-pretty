@@ -158,15 +158,17 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
                 align-items: center;
                 height: 100vh;
                 margin: 0;
-                background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+                background-color: #f5f5f4;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             .message-container {
                 text-align: center;
                 padding: 20px;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .logo {
+                width: 100px;
+                height: auto;
+                margin-bottom: 20px;
             }
             .message {
                 font-size: 1.5em;
@@ -187,15 +189,17 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
                 align-items: center;
                 height: 100vh;
                 margin: 0;
-                background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+                background-color: #f5f5f4;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             .message-container {
                 text-align: center;
                 padding: 20px;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .logo {
+                width: 100px;
+                height: auto;
+                margin-bottom: 20px;
             }
             .message {
                 font-size: 1.5em;
@@ -218,15 +222,17 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
                 align-items: center;
                 height: 100vh;
                 margin: 0;
-                background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+                background-color: #f5f5f4;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             .message-container {
                 text-align: center;
                 padding: 20px;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .logo {
+                width: 100px;
+                height: auto;
+                margin-bottom: 20px;
             }
             .message {
                 font-size: 1.5em;
@@ -247,6 +253,7 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
             </head>
             <body>
                 <div class=\"message-container\">
+                    <img src=\"logo.png\" alt=\"Logo\" class=\"logo\">
                     <div class=\"message\">Please close this page and return to the application.</div>
                 </div>
             </body>
@@ -259,15 +266,17 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            background-color: #f5f5f4;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .message-container {
             text-align: center;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
         }
         .message {
             font-size: 1.5em;
@@ -276,6 +285,7 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
         "#
     ),
 };
+
 
 
 
