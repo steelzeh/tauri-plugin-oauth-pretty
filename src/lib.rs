@@ -157,7 +157,7 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
             format!("<head>{}</head>{}", script, s)
         }
         None => format!(
-            "<html><head><style>@keyframes spin {{ 0% {{ transform: rotate(0deg); }} 100% {{ transform: rotate(360deg); }} }}</style></head><body style='font-family: system-ui; background: #1a1a1a; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;'><div class='container' style='text-align: center; padding: 2rem;'><div class='spinner' style='border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto;'></div><h2>Authentication Successful!</h2><p>You can close this window and return to the application.</p></div></body></html>",
+            "<html><head>{}</head><body>Please return to the app.</body></html>",
             script
         ),
     };
