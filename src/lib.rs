@@ -146,21 +146,40 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
         port
     );
     let response = match response {
-        Some(s) if s.contains("<head>") => s.replace("<head>", &format!("<head>{}", script)),
-        Some(s) if s.contains("<body>") => {
-            s.replace("<body>", &format!("<head>{}</head><body>", script))
-        }
-        Some(s) => {
-            log::warn!(
-                "`response` does not contain a body or head element. Prepending a head element..."
-            );
-            format!("<head>{}</head>{}", script, s)
-        }
-        None => format!(
-            "<html><head>{}</head><body>Please return to the app.</body></html>",
-            script
+    Some(s) if s.contains("<head>") => s.replace(
+        "<head>",
+        &format!(
+            "<head>{}<style>{}</style>",
+            script,
+            "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }"
         ),
-    };
+    ),
+    Some(s) if s.contains("<body>") => s.replace(
+        "<body>",
+        &format!(
+            "<head>{}</head><style>{}</style><body>",
+            script,
+            "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }"
+        ),
+    ),
+    Some(s) => {
+        log::warn!(
+            "`response` does not contain a body or head element. Prepending a head element..."
+        );
+        format!(
+            "<head>{}</head><style>{}</style>{}",
+            script,
+            "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }",
+            s
+        )
+    }
+    None => format!(
+        "<html><head>{}</head><style>{}</style><body><div>Please return to the app.</div></body></html>",
+        script,
+        "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }"
+    ),
+};
+
 
     // TODO: Test if unwrapping here is safe (enough).
     conn.write_all(
