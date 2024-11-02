@@ -151,7 +151,28 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
         &format!(
             "<head>{}<style>{}</style>",
             script,
-            "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }"
+            r#"
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .message-container {
+                text-align: center;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .message {
+                font-size: 1.5em;
+                color: #333;
+            }
+            "#
         ),
     ),
     Some(s) if s.contains("<body>") => s.replace(
@@ -159,7 +180,28 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
         &format!(
             "<head>{}</head><style>{}</style><body>",
             script,
-            "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }"
+            r#"
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .message-container {
+                text-align: center;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .message {
+                font-size: 1.5em;
+                color: #333;
+            }
+            "#
         ),
     ),
     Some(s) => {
@@ -169,16 +211,72 @@ fn handle_connection(mut conn: TcpStream, response: Option<&str>, port: u16) -> 
         format!(
             "<head>{}</head><style>{}</style>{}",
             script,
-            "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }",
+            r#"
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .message-container {
+                text-align: center;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .message {
+                font-size: 1.5em;
+                color: #333;
+            }
+            "#
+            ,
             s
         )
     }
     None => format!(
-        "<html><head>{}</head><style>{}</style><body><div>Please return to the app.</div></body></html>",
+        "<html>
+            <head>
+                {}
+                <style>
+                    {}
+                </style>
+            </head>
+            <body>
+                <div class=\"message-container\">
+                    <div class=\"message\">Please close this page and return to the application.</div>
+                </div>
+            </body>
+        </html>",
         script,
-        "body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }"
+        r#"
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .message-container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            font-size: 1.5em;
+            color: #333;
+        }
+        "#
     ),
 };
+
 
 
     // TODO: Test if unwrapping here is safe (enough).
